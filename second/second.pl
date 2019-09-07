@@ -7,6 +7,7 @@ push(@FerstArray,$line);
 }
 
 print "Enter second arry\n";
+#завершение строки - пустая строчка
 while ($line = <STDIN> and $line!="") {
 push(@SecondArray,$line);
 }
@@ -16,9 +17,46 @@ print "You enter different count of ellements\n";
      exit;
 }
 @summoFTwoArray = (@FerstArray, @SecondArray);
-
 print" the Union of sets\n @summoFTwoArray";
+@intersection;
+foreach $itemFirst (@FerstArray){
+   foreach $itemSecond (@SecondArray){
+      if($itemFirst==$itemSecond){
+         $temporyVarable = $itemFirst;
+         push(@intersection,$temporyVarable)
+      }
+   }
+}
+print "The intersection's arrays are: \n @intersection";
 
+@differenceFirstWithOutSecond;
+foreach $itemFirst (@FerstArray){
+   foreach $itemSecond (@intersection){
+      if($itemFirst!=$itemSecond){
+         $temporyVarable = $itemFirst;
+         push(@differenceFirstWithOutSecond,$temporyVarable);
+      }
+   }
+}
+
+print "\n The difference First array without Second are:\n @differenceFirstWithOutSecond";
+
+@differenceSecondWithOutFirst;
+foreach $itemFirst (@SecondArray){
+   foreach $itemSecond (@intersection){
+      if($itemFirst!=$itemSecond){
+         $temporyVarable = $itemFirst;
+         push(@differenceSecondWithOutFirst,$temporyVarable);
+      }
+   }
+}
+
+print "\n The difference Second array without First are:\n @differenceSecondWithOutFirst";
+
+@symmetricDifference = (@differenceFirstWithOutSecond,@differenceSecondWithOutFirst);
+
+print "\n The symetric difference are:\n @symmetricDifference";
+print"\n";
 #---2---------------------------------------------------------
 
 @permutationArray = @FerstArray;
