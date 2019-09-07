@@ -2,13 +2,13 @@
 @FerstArray ;
 @SecondArray;
 print "Enter first arry\n";
-while ($line = <STDIN> and $line!="") {
+while ($line = <STDIN> and $line=~ /^[0-9]$/) {
 push(@FerstArray,$line);
 }
 
 print "Enter second arry\n";
 #завершение строки - пустая строчка
-while ($line = <STDIN> and $line!="") {
+while ($line = <STDIN> and $line=~ /^[0-9]$/) {
 push(@SecondArray,$line);
 }
 if (@FerstArray!=@SecondArray){
