@@ -1,6 +1,13 @@
 #! /bin/usr/perl
+sub uniq {
+    my %seen;
+    grep !$seen{$_}++, @_;
+}
 @FerstArray ;
 @SecondArray;
+
+@FerstArrayInpt ;
+@SecondArrayInpt;
 print "Enter first arry\n";
 while ($line = <STDIN> and $line=~ /^[0-9]$/) {
 push(@FerstArray,$line);
@@ -16,11 +23,11 @@ if (@FerstArray!=@SecondArray){
 print "You enter different count of ellements\n";
      exit;
 }
-@summoFTwoArray = (@FerstArray, @SecondArray);
+@summoFTwoArray = uniq(@FerstArray, @SecondArray);
 print" the Union of sets\n @summoFTwoArray";
 @intersection;
-foreach $itemFirst (@FerstArray){
-   foreach $itemSecond (@SecondArray){
+foreach my $itemFirst (@FerstArray){
+   foreach my $itemSecond (@SecondArray){
       if($itemFirst==$itemSecond){
          $temporyVarable = $itemFirst;
          push(@intersection,$temporyVarable)
@@ -30,11 +37,11 @@ foreach $itemFirst (@FerstArray){
 print "The intersection's arrays are: \n @intersection";
 
 @differenceFirstWithOutSecond;
-foreach $itemFirst (@FerstArray){
-   foreach $itemSecond (@intersection){
-      if($itemFirst!=$itemSecond){
-         $temporyVarable = $itemFirst;
-         push(@differenceFirstWithOutSecond,$temporyVarable);
+foreach my $itemFirstm (@FerstArray){
+   foreach my $itemSecondm (@intersection){
+      if($itemFirstm!=$itemSecondm and!($itemFirstm~~@differenceFirstWithOutSecond) and  !($itemSecondm~~@differenceFirstWithOutSecond)){
+         $temporyVarablem = $itemFirstm;
+         push(@differenceFirstWithOutSecond,$temporyVarablem);
       }
    }
 }
@@ -44,7 +51,7 @@ print "\n The difference First array without Second are:\n @differenceFirstWithO
 @differenceSecondWithOutFirst;
 foreach $itemFirst (@SecondArray){
    foreach $itemSecond (@intersection){
-      if($itemFirst!=$itemSecond){
+      if($itemFirst!=$itemSecond and !($itemSecond~~@differenceSecondWithOutFirst) and  !($itemFirst~~@differenceSecondWithOutFirst)){
          $temporyVarable = $itemFirst;
          push(@differenceSecondWithOutFirst,$temporyVarable);
       }
@@ -53,7 +60,7 @@ foreach $itemFirst (@SecondArray){
 
 print "\n The difference Second array without First are:\n @differenceSecondWithOutFirst";
 
-@symmetricDifference = (@differenceFirstWithOutSecond,@differenceSecondWithOutFirst);
+@symmetricDifference = uniq((@differenceFirstWithOutSecond,@differenceSecondWithOutFirst));
 
 print "\n The symetric difference are:\n @symmetricDifference";
 print"\n";
