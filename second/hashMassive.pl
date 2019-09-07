@@ -36,6 +36,7 @@ format menu =
 
 #Добавление элемента в хеш-массив
 sub addValue{
+    print "\n\n\n";
     print "Введите ключ:     ";
     $keyAdd = <STDIN>;
     chomp($keyAdd);
@@ -43,19 +44,24 @@ sub addValue{
     $valueAdd = <STDIN>;
     chomp($valueAdd);
     $hashMassive{$keyAdd} = $valueAdd;
+    print "\n\n\n";
 }
 
 
 #Удаление элемента их хеш-массива
 sub deleteValue{
+    print "\n\n\n";
     print "Введите ключ элемента:   ";
     $keyDelete = <STDIN>;
     chomp($keyDelete);
     delete ($hashMassive{$keyDelete});
+    print "\n\n\n";
 }
 
 sub showHashMassive{
+   print "\n\n\n ХЕШ-МАССИВ\n\n";
    while(@Res = each %hashMassive){
        print "$Res[0] = @Res[1]\n";
    }
+   print "\n\n\n";
 }
