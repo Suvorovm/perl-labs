@@ -39,5 +39,25 @@ $counter = 0;
  print "The permutation array :\n @permutationArray";
  
  
- 
- 
+#--3----------------------------------------------------------
+
+@evenOddMassive;
+$counterEvenOdd = 0;
+$counterOdd = 0;
+$counterEven = 0;
+
+while($counterEvenOdd < $#FerstArray + $#SecondArray + 2){
+
+   if($counterEvenOdd % 2 == 0){
+      $evenOddMassive[$counterEvenOdd] = $FerstArray[$counterEven];
+      $counterEven++;
+   }
+
+   if($counterEvenOdd % 2 == 1){
+      $evenOddMassive[$counterEvenOdd] = $SecondArray[$counterOdd];
+      $counterOdd++;
+   }
+
+   $counterEvenOdd++;
+}
+ print "The evenOddMassive array :\n @evenOddMassive";
