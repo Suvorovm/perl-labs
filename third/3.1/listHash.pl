@@ -35,13 +35,13 @@ sub insert
 {
   my ($item, $name, $surname, $lastName, $IdNumber, $birthYear)=  @_;
   unless ($item)
-  { $item ={};                          #Анонимный хеш, создаем запись
+  { $item ={};                          
     $item->{NAME}= $name;
     $item->{SURNAME}= $surname;
     $item->{LASTNAME}= $lastName;
     $item->{IDNUMBER}=  $IdNumber;
     $item -> {BIRTHYEAR} = $birthYear; 
-    $item->{NEXT}=undef;   #Последний элемент в списке
+    $item->{NEXT}=undef;   
     $_[0]=$item;
     return;
   }
