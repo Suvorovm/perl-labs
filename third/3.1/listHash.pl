@@ -73,8 +73,6 @@ sub list_print ()
 }
 
 format SALUT_FORMAT=	
-Введите 
-
 Имя:^|||||||||||||||||
 $name
 Фамилию:^|||||||||||||||||
@@ -85,5 +83,4 @@ $lastName
 $IdNumber
 Дата рождения:^|||||||||||||||||
 $birthYear
-
 .
