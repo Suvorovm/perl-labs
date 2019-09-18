@@ -1,7 +1,6 @@
 
 #! /bin/usr/perl
 $END_INPUT  = 'Y';
-
 if (defined $head) {undef $head;}
 $name = "";
 $surname = "";
