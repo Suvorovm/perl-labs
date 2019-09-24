@@ -8,6 +8,7 @@ $lastName = "";
 $IdNumber = "";
 $birthYear = "";
 $IsStoped = 'N';
+
 #ne - ключевое слово, позволяюще сделать сравнение  и сразу добавить отрицание -\_/-
 while ($IsStoped ne $END_INPUT )
 { 
@@ -24,15 +25,16 @@ while ($IsStoped ne $END_INPUT )
   print "Закончить ввод ? Y/N ";
   $IsStoped = <>;
   chomp($IsStoped);#обрубаем служебный символ /n
-  insert($head, $name, $surname, $lastName , $IdNumber, $birthYear);
+  push_list($head, $name, $surname, $lastName , $IdNumber, $birthYear);
 }
 print "\n";
 list_print($head);
 #Добавление в список
 
-sub insert
+sub push_list
 {
   my ($item, $name, $surname, $lastName, $IdNumber, $birthYear)=  @_;
+  my $currentHead = $item;
   unless ($item)
   { $item ={};                          
     $item->{NAME}= $name;
@@ -44,16 +46,39 @@ sub insert
     $_[0]=$item;
     return;
   }
+  if ($item->{IDNUMBER} > $IdNumber)
+  { $item ={};                          
+    $item->{NAME}= $name;
+    $item->{SURNAME}= $surname;
+    $item->{LASTNAME}= $lastName;
+    $item->{IDNUMBER}=  $IdNumber;
+    $item -> {BIRTHYEAR} = $birthYear; 
+    $item->{NEXT}=$currentHead;   
+    $_[0]=$item;
+    return;
+  }
  if ($item->{IDNUMBER} == $IdNumber)
   {
    warn "Такое значение уже есть в списке!\n";
   }
  else
  {
-   insert ($item->{NEXT}, $name,$surname,$lastName,$IdNumber,$birthYear);
+   push_list($item->{NEXT}, $name,$surname,$lastName,$IdNumber,$birthYear);
  }
 }
+sub insert_item(){
+   my ($item, $name, $surname, $lastName, $IdNumber, $birthYear)=  @_;
+   $item ={};                          
+    $item->{NAME}= $name;
+    $item->{SURNAME}= $surname;
+    $item->{LASTNAME}= $lastName;
+    $item->{IDNUMBER}=  $IdNumber;
+    $item -> {BIRTHYEAR} = $birthYear; 
+    $item->{NEXT}=undef;   
+    $_[0]=$item;
+    return;
 
+}
 #Печать списка
 sub list_print ()
  {  my ($item) = shift @_;
@@ -66,7 +91,8 @@ sub list_print ()
   $IdNumber = $item->{IDNUMBER};
   $birthYear = $item->{BIRTHYEAR};
   $~=SALUT_FORMAT;
-  write;    
+  write;
+  print("\n");    
   list_print ($item->{NEXT});
   }
 }
