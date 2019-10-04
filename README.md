@@ -9,3 +9,6 @@ In Perl, several functions and operators use this variable as a default, in case
 https://www.perlmonks.org/?node_id=444124
 #### How to compare string ?
  https://stackoverflow.com/questions/1175390/how-do-i-compare-two-strings-in-perl
+ 
+ #### Ссылке и параметры 
+ https://www.perltutorial.org/passing-parameters-to-subroutine/
