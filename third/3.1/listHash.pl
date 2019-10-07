@@ -117,7 +117,7 @@ sub list_print () {
 
 sub delete_from_list {
   $item = $_[0];
-  my $previusHead
+  my $previousHead
       = $_[1];    #Передача по ссылке, чтобы сработало, нужно обращать напрямик к $_[n]
   my $numberToDellete = $_[2];
   unless ($item) {
@@ -125,7 +125,7 @@ sub delete_from_list {
     return;
   }
   if ($item->{ IDNUMBER } == $numberToDellete) {
-    if ($previusHead == undef) {
+    if ($previousHead == undef) {
       $_[0] = $item->{ NEXT };
       return;
     }
