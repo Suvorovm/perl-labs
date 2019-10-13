@@ -1,5 +1,4 @@
 #! /bin/usr/perl
-$END_INPUT = 'Y';
 if (defined $head) { undef $head; }
 
 $value     = "";
@@ -13,15 +12,78 @@ while ($ExitNumber !=5) {
     PushData();
   }
   if ($ExitNumber == 2) {
-    DeleteById();
+    DeleteFromTree()
   }
   if ($ExitNumber == 3) {
     GenerateTree($head);
   }
   if($ExitNumber==4){
-      pirnt_tree($head)
+      print "\n";
+      pirnt_tree($head);
   }
   chomp($ExitNumber);
+  print "\n";
+}
+
+sub DeleteFromTree(){
+    unless($head){
+        print"Невохможено удалить пустое дерево !";
+        return;
+    }
+    print "Введите значение для удаления";
+    $itemToDellete = <>;
+    Delete(undef,$head,$itemToDellete)
+}
+
+sub Delete(){
+    my ($previusElement,$item,$itemToDellete) = @_;
+    unless ($item){
+        return;
+    }
+    if($itemToDellete == $item -> {VALUE}){
+        unless ($previusElement){
+            $head = {};
+            CheckSubBranch($head,$item->{LEFT});
+            CheckSubBranch($head,$item->{RIGHT});
+            return;
+
+        }
+        if($previusElement -> {VALUE} > $itemToDellete){
+            $_[0] -> {LEFT} = undef;
+            CheckSubBranch($head,$item->{LEFT});
+            CheckSubBranch($head,$item->{RIGHT});
+           
+        }else{
+            $_[0] -> {RIGHT} = undef;
+            CheckSubBranch($head,$item->{RIGHT});
+            CheckSubBranch($head,$item->{LEFT});       
+            
+        }
+        print "\n Элелемент ", $itemToDellete,"  удален";
+        return;
+    }
+    Delete($_[1],$_[1]->{LEFT},$itemToDellete);
+    Delete($_[1],$_[1]->{RIGHT},$itemToDellete); 
+}
+
+sub CheckSubBranch(){
+    my ($item,$SubBranch) = @_;
+    unless ($item){
+        return;
+    }
+    ReAddSubBranch($_[0],$_[1])  
+} 
+
+sub ReAddSubBranch(){
+
+    my ($item,$SubBranch) = @_;
+    unless ($SubBranch){
+        return;
+    }
+    ReAddSubBranch( undef,$SubBranch->{LEFT} );
+    $val = $SubBranch->{VALUE};
+    push_data($head,$val);
+    ReAddSubBranch(undef,$SubBranch->{RIGHT});
 }
 
 sub GenerateTree(){
@@ -39,7 +101,7 @@ sub StartGenerate(){
             push_data($head,$element);
             $countOfElements = $countOfElements -1;
     }
-    print "\n Успешно сгенерированно!"
+    print "\n Успешно сгенерированно! \n"
 }
 
 
