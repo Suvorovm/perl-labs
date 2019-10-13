@@ -13,6 +13,7 @@ $khalim = "Хамзин Халим";
 $ilyas = "Хусаинов Ильяс";
 $==1;
 $^ = SALUT_FORMAT_TOP;
+
 $~=SALUT_FORMAT; 
 write;		
 
