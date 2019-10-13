@@ -76,9 +76,7 @@ $counter = 0;
     $permutationArray[$counter] = $permutationArray[$counter-1];
     $permutationArray[$counter-1] = $buf;
     $counter--;
-    
-    # Эта хуйня не работает. ебанная меточика в рот ебал
-    # $permutationArray[$counter-1,$counter] = $permutationArray[$counter,$counter-1];
+
  }
 
  print "The permutation array :\n @permutationArray";
