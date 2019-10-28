@@ -10,7 +10,7 @@ $IdNumber  = "";
 $birthYear = "";
 $IsStoped  = 'N';
 
-while ($ExitNumber != 4) {
+while ($ExitNumber != 5) {
   $~ = MENU_FORMAT;
   write;
   $ExitNumber = <>;
@@ -22,6 +22,10 @@ while ($ExitNumber != 4) {
   }
   if ($ExitNumber == 3) {
     list_print($head);
+  }
+  if($ExitNumber == 4){
+    print "\tname\t surname\t lastName\t Number\t \t year\t \n";
+    print_by_tables($head);
   }
   chomp($ExitNumber);
 }
@@ -114,6 +118,46 @@ sub list_print () {
     list_print ($item->{NEXT});
   }
 }
+sub print_by_tables{
+  my $item = shift @_;
+  unless ($item) {
+    print "конец списка\n";
+    return;
+  }
+  else {
+    $name     = $item->{ NAME };
+    chomp($name);
+    $name  ="\t".$name."\t";
+    #print $name;
+   
+
+    $surname   = $item->{ SURNAME };
+    chomp($surname);
+    $surname   = $surname."\t \t";
+    #print $surname;
+    
+    
+    $lastName  = $item->{ LASTNAME };
+    chomp( $lastName );
+    $lastName = $lastName."\t  \t";
+   # print $lastName ;
+    #print "\t";
+
+    $IdNumber  = $item->{ IDNUMBER };
+    chomp( $IdNumber );
+    $IdNumber = $IdNumber."\t  \t";
+
+    
+    $birthYear = $item->{ BIRTHYEAR };
+    chomp( $birthYear );
+    $birthYear = $birthYear."\t  \t";
+
+    $result  = $name.$surname.$lastName.$IdNumber.$birthYear;
+    print($result);   
+    print("\n");
+    print_by_tables($item->{NEXT});
+  }
+}
 
 sub delete_from_list {
   $item = $_[0];
@@ -161,5 +205,6 @@ format MENU_FORMAT  =
 1: Ввод данынх
 2: Удалить данные по ID зачеток
 3: Вывести даныне
-4: Выйти
+4: Печать по столбцам
+5: Выйти
 .

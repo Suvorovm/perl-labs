@@ -16,6 +16,9 @@ for($i = $disks; $i > 0; $i--){
 push(@Aa, $i);
 }
 
+print"\nAa: @Aa\n";
+print"\nBb: @Bb\n";
+print"\nCc:  @Cc\n";
 
 $buf=<STDIN>;
 
@@ -34,12 +37,9 @@ sub hanoiTower{
     my ($first, $A, $second, $B, $third, $C, $n) = @_;
         
   
-    if($n == 1){
+    if($n == 1){    
         $disk = pop (@$first);
-        push @$third, $disk;
-        print"\nAa: @$first\n";
-        print"\nBb: @$second\n";
-        print"\nCc: @$third\n";
+        push @$third, $disk;   
         print"Перенос диска диаметра $disk со стержня $A на стержень $C\n";
         return  
     }

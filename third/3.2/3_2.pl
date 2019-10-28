@@ -2,7 +2,7 @@
 if (defined $head) { undef $head; }
 
 $value     = "";
-
+$countSpace = 10;
 
 while ($ExitNumber !=5) {
   $~ = MENU_FORMAT;
@@ -19,7 +19,7 @@ while ($ExitNumber !=5) {
   }
   if($ExitNumber==4){
       print "\n";
-      pirnt_tree($head);
+      pirnt_tree($head,0);
   }
   chomp($ExitNumber);
   print "\n";
@@ -131,15 +131,20 @@ sub push_data() {
 
 
 sub pirnt_tree(){
-    my ($item) = @_;
+    my ($item,$level) = @_;
     unless ($item){
         return;
     }
-    pirnt_tree( $item->{LEFT} );
+    $level = $level+$countSpace;
+    pirnt_tree( $item->{RIGHT}, $level );
     $val = $item->{VALUE};
-    print "Значение = " + $val;
-    print"\n";
-    pirnt_tree($item->{RIGHT});
+    print "\n";
+    for (my $i=$countSpace; $i <= $level; $i++) {
+     print " ";
+    }
+    print $val; 
+    print "\n";
+    pirnt_tree($item->{LEFT},$level);
 }
 
 
