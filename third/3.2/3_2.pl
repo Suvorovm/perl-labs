@@ -41,7 +41,7 @@ sub Delete(){
         return;
     }
     if($itemToDellete == $item -> {VALUE}){
-        unless ($previusElement){
+        unless ($previusElement){#readd
             $head = {};
             CheckSubBranch($head,$item->{LEFT});
             CheckSubBranch($head,$item->{RIGHT});
@@ -49,19 +49,30 @@ sub Delete(){
 
         }
         if($previusElement -> {VALUE} > $itemToDellete){
-            $_[0] -> {LEFT} = undef;
-            CheckSubBranch($head,$item->{LEFT});
-            CheckSubBranch($head,$item->{RIGHT});
-           
+            $leftBranch = $item ->  {LEFT};
+            $rightBranch = $item -> {RIGHT};
+            unless($rightBranch){
+                $_[0] -> {LEFT} =  $item -> {LEFT}; 
+            }else{
+            $_[0] -> {LEFT} =  $item -> {RIGHT};            
+            CheckSubBranch($_[1] , $leftBranch);
+            }
         }else{
-            $_[0] -> {RIGHT} = undef;
-            CheckSubBranch($head,$item->{RIGHT});
-            CheckSubBranch($head,$item->{LEFT});       
-            
+            $leftBranch =  $_[1] -> {LEFT};
+            $rightBranch = $item -> {RIGHT};
+            unless($rightBranch){
+                $_[0] -> {RIGHT} =  $item -> {LEFT}; 
+            }else{
+            $_[0] -> {RIGHT} =  $item -> {RIGHT}; 
+            CheckSubBranch($_[1] ,$leftBranch);
+            }
+          
         }
+
+
         print "\n Элелемент ", $itemToDellete,"  удален";
         return;
-    }
+    }#глушить ошибку если эллемента нет
     Delete($_[1],$_[1]->{LEFT},$itemToDellete);
     Delete($_[1],$_[1]->{RIGHT},$itemToDellete); 
 }

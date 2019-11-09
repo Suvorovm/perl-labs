@@ -86,18 +86,7 @@ sub push_list {
   }
 }
 
-sub insert_item() {
-  my ($item, $name, $surname, $lastName, $IdNumber, $birthYear) = @_;    #Передача массива как скаляра
-  $item                = {};
-  $item->{ NAME }      = $name;
-  $item->{ SURNAME }   = $surname;
-  $item->{ LASTNAME }  = $lastName;
-  $item->{ IDNUMBER }  = $IdNumber;
-  $item->{ BIRTHYEAR } = $birthYear;
-  $item->{ NEXT }      = undef;
-  $_[0]                = $item;
-  return;
-}
+
 
 #Печать списка
 sub list_print () {

@@ -50,10 +50,6 @@ sub hanoiTower{
         push @$third, $disk;
         print"Перенос диска диаметра $disk со стержня $A на стержень $C\n";
         hanoiTower(\@$second, $B, \@$first, $A, \@$third, $C, $n-1);
-    }
-       
-
-
-
+    }  
 
 }
