@@ -1,5 +1,6 @@
 #! /bin/usr/perl
 
+##########sudo apt-get install libswitch-perl ОБЯЗАТЕЛЬНО УСТАНОВИТЬ!!!!#########
 # push (@INC,"/home/twoxowt/Univer/Perl/perl-labs/fourth");
 use lib "/home/twoxowt/Univer/Perl/perl-labs/fourth";
 use servant;

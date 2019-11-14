@@ -1,4 +1,5 @@
 #! /bin/usr/perl
+##########sudo apt-get install libswitch-perl ОБЯЗАТЕЛЬНО УСТАНОВИТЬ!!!!#########
 package servant;
 require Exporter;
 use Switch;
@@ -37,7 +38,6 @@ sub construct{
 
 sub DESTROY{
     my $ref =shift;
-    # $ref->SUPER::DESTROY; #вызов родительского деструктора
     print "Объект удален\n";
 }
 
