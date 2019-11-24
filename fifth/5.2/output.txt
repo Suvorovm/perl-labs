@@ -1,0 +1,26 @@
+Введите путь
+/home/suvorov/work
+
+Дирректория : pyth 
+Дирректория : DjangoProjects 
+Дирректория : untitled 
+Дирректория : venv 
+Дирректория : bin 
+              Файл : python3.6 -rwxr-xr-x 1 suvorov suvorov 4571576 сен  8 08:32 /home/suvorov/work/pyth/DjangoProjects/untitled/venv/bin/python3.6
+              Файл : activate -rw-r--r-- 1 suvorov suvorov 2228 сен  8 08:32 /home/suvorov/work/pyth/DjangoProjects/untitled/venv/bin/activate
+              Файл : python -rwxr-xr-x 1 suvorov suvorov 4571576 сен  8 08:32 /home/suvorov/work/pyth/DjangoProjects/untitled/venv/bin/python
+              Файл : pip3.6 -rwxrwxr-x 1 suvorov suvorov 418 сен  8 08:32 /home/suvorov/work/pyth/DjangoProjects/untitled/venv/bin/pip3.6
+Дирректория : __pycache__ 
+                Файл : django-admin.cpython-36.pyc -rw-rw-r-- 1 suvorov suvorov 267 сен  8 08:32 /home/suvorov/work/pyth/DjangoProjects/untitled/venv/bin/__pycache__/django-admin.cpython-36.pyc
+Дирректория : documents 
+        Файл : test -rw-r--r-- 1 suvorov suvorov 0 ноя 24 00:07 /home/suvorov/work/documents/test
+Дирректория : Hackonton 
+Дирректория : secondTry 
+Дирректория : venv 
+Дирректория : bin 
+                Файл : python3.6 -rwxr-xr-x 1 suvorov suvorov 4526456 сен 28 00:34 /home/suvorov/work/Hackonton/secondTry/venv/bin/python3.6
+                Файл : activate -rw-r--r-- 1 suvorov suvorov 2219 сен 28 00:34 /home/suvorov/work/Hackonton/secondTry/venv/bin/activate
+                Файл : python -rwxr-xr-x 1 suvorov suvorov 4526456 сен 28 00:34 /home/suvorov/work/Hackonton/secondTry/venv/bin/python
+                Файл : pip3.6 -rwxrwxr-x 1 suvorov suvorov 409 сен 28 00:34 /home/suvorov/work/Hackonton/secondTry/venv/bin/pip3.6
+Дирректория : __pycache__ 
+                  Файл : django-admin.cpython-36.pyc -rw-rw-r-- 1 suvorov suvorov 268 сен 28 00:34 /home/suvorov/work/Hackonton/secondTry/venv/bin/__pycache__/django-admin.cpython-36.pyc
