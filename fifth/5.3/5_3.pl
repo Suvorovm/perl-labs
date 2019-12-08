@@ -33,7 +33,7 @@ sub PrintAndopenRecursive {
                     
                     if($file =~ ".$expansion"){                  
                     unlink $pathTempory; 
-                    print "1\n";
+                    print "$file  Удален\n";
                     }                                   
                 }
             }                        
