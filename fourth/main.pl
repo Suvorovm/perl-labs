@@ -56,7 +56,9 @@ sub deleteValue{
         print "Объект не объявлен\n";
         return;
     }
+    
     $instance->DESTROY();
+    undef $instanse;
 }
 
 sub showInstance{
