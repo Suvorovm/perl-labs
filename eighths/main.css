@@ -1,0 +1,43 @@
+*{
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+}
+body{
+    background-color: #ecf0f1;
+}
+.main{
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form{
+    
+    width: 20vw;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+}
+
+.data{
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+}
+
+.in{
+    border: none;
+    height: 30px;
+    background-color: #bdc3c7;
+}
+.submit{
+    border: none;
+    color: white;
+    background-color: #4CAF50;
+}
+.submit:hover{
+
+    background-color: #81C784;
+}
