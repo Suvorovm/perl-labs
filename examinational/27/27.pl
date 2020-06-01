@@ -1,4 +1,6 @@
 #!/usr/bin/perl
+use CGI qw(:standard);
+
 
 print "Content-type:text/html\r\n\r\n";
 print '<html>';
