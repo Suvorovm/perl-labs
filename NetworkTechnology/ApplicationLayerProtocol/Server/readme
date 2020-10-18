@@ -1,3 +1,12 @@
 The server use POE lib.
 You shoud install the lib with command 
  $sudo apt-get install -y libmoosex-poe-perl
+
+
+
+Protocoll
+    -a          -get adress client and server
+    -t          -get time of server
+    -f-g path   -get file  by $path
+    -f-s path   -save file to server by $path
+    

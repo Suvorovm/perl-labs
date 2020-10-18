@@ -1,74 +1,46 @@
 #!/usr/bin/perl -w
 use strict;
+use warnings FATAL => 'all';
 use POE;
 use POE::Component::Client::TCP;
-use POE::Filter::Stream;
-my @ports = qw( pop3 smtp nntp http imap3 );    # The ports to connect to.
-my $host  = "localhost";                        # The host to test.
+use POE::Filter::Reference;
 
-# Spawn a new client for each port.
-foreach my $port (@ports) {
-  POE::Component::Client::TCP->new(
-    RemoteAddress => $host,
-    RemotePort    => $port,
-    Filter        => "POE::Filter::Stream",
+my $host   = "localhost";    # The host to test.
+my $port   = 7999;
 
-    # The client has connected.  Display some status and prepare to
-    # gather information.  Start a timer that will send ENTER if the
-    # server does not talk to us for a while.
-    Connected => sub {
-      print "connected to $host:$port ...\n";
-      $_[HEAP]->{banner_buffer} = [];
-      $_[KERNEL]->delay(send_enter => 5);
-    },
 
-    # The connection failed.
-    ConnectError => sub {
-      print "could not connect to $host:$port ...\n";
-    },
+POE::Component::Client::TCP->new(
+  RemoteAddress => $host,
+  RemotePort    => $port,
+ # Filter        => "POE::Filter::Reference",
+  Connected     => sub {
+    my $j = "teste";
+    print " The Seanse connected to $host:$port ...";
+    #$_[HEAP]->{server}->put(\@values);
+  },
+  ConnectError => sub {
+    print "could not connect to $host:$port ...";
+  },
+  ServerInput => sub {
 
-    # The server has sent us something.  Save the information.  Stop
-    # the ENTER timer, and begin (or refresh) an input timer.  The
-    # input timer will go off if the server becomes idle.
-    ServerInput => sub {
-      my ($kernel, $heap, $input) = @_[KERNEL, HEAP, ARG0];
-      print "got input from $host:$port ...\n";
-      push @{$heap->{banner_buffer}}, $input;
-      $kernel->delay(send_enter    => undef);
-      $kernel->delay(input_timeout => 1);
-    },
+    #when the server answer the question
+    my ($kernel, $heap, $input) = @_[KERNEL, HEAP, ARG0];    
 
-    # These are handlers for additional events not included in the
-    # default Server::TCP module.  In this example, they handle
-    # timers that have gone off.
-    InlineStates => {  # The server has not sent us anything yet.  Send an ENTER
-          # keystroke (really a network newline, \x0D\x0A), and wait
-          # some more.
-      send_enter => sub {
-        print "sending enter on $host:$port ...\n";
-        $_[HEAP]->{server}->put("");    # sends enter
-        $_[KERNEL]->delay(input_timeout => 5);
-      },
+    if ($input eq "success"){
+      print "\n Now you can work with server \n"
+    }
+    
+    print $input. " ";;
+    print "Input the coman\n";;
+    my $comand = <STDIN>;
+    chomp $comand;
+    $_[HEAP]->{server}->put($comand);
+  },
 
-      # The server sent us something already, but it has become idle
-      # again.  Display what the server sent us so far, and shut
-      # down.
-      input_timeout => sub {
-        my ($kernel, $heap) = @_[KERNEL, HEAP];
-        print "got input timeout from $host:$port ...\n";
-        print ",----- Banner from $host:$port\n";
-        foreach (@{$heap->{banner_buffer}}) {
-          print "| $_";
+  
+);
+# Broadcast client input to everyone in the chat room.
 
-          # print "| ", unpack("H*", $_), "\n";
-        }
-        print "`-----\n";
-        $kernel->yield("shutdown");
-      },
-    },
-  );
-}
+$poe_kernel->run(); 
 
-# Run the clients until the last one has shut down.
-$poe_kernel->run();
 exit 0;
