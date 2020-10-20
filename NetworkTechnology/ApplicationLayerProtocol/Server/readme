@@ -1,12 +1,26 @@
 The server use POE lib.
-You shoud install the lib with command 
+You should install the lib with command
  $sudo apt-get install -y libmoosex-poe-perl
 
 
 
-Protocoll
-    -a          -get adress client and server
-    -t          -get time of server
-    -f-g path   -get file  by $path
-    -f-s path   -save file to server by $path
-    
+Protocol
+
+%s% - separator of protocol
+
+    -a                                                  -get adress client and server
+    -t                                                  -get time of server
+    -f-g%_%<path>                                       -get file  by $path
+    -f-s%_%<path>%_%<name>%_%<content>                  -save file to server by $path
+    -c-s                                                -connected success
+    -f-s-s                                              -file saved in server success
+    -f-s-f                                              -file saved in server Failed
+    -f-g-s%_%<name>%_%<content>                  -file from server
+    -f-g-f%_%<error>                                    -get file from server finish with error
+
+
+
+Example
+ -f-s%_%/home/UserName/Uni/4_1/Perl/perl-labs/NetworkTechnology/ApplicationLayerProtocol/Client/Content/fileClient.txt%_%fileTest
+    save file fileClient.txt and save as fileTest
+ -f-g%_%Content/fileTest - get file fileTest from Server;
