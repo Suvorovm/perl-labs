@@ -12,3 +12,11 @@ https://www.perlmonks.org/?node_id=444124
  
  #### Ссылке и параметры 
  https://www.perltutorial.org/passing-parameters-to-subroutine/
+
+
+### Multithreaded TCP
+
+
+The server use POE lib.
+You shoud install the lib with command 
+ $sudo apt-get install -y libmoosex-poe-perl
