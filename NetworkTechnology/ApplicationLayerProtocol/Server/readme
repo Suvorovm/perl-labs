@@ -21,6 +21,6 @@ Protocol
 
 
 Example
- -f-s%_%/home/UserName/Uni/4_1/Perl/perl-labs/NetworkTechnology/ApplicationLayerProtocol/Client/Content/fileClient.txt%_%fileTest
+ -f-s%_%/home/UserName/Uni/4_1/Perl/perl-labs/NetworkTechnology/ApplicationLayerProtocol/Client/Content/fileClient2.txt%_%fileTest
     save file fileClient.txt and save as fileTest
  -f-g%_%Content/fileTest - get file fileTest from Server;

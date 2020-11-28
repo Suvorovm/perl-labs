@@ -13,7 +13,7 @@ use File::Basename;
 
 
 # Create the server on port 7999, and start it running.
-my $port = 7999;
+my $port = 7998;
 
 #Needs dir change for user
 
@@ -24,13 +24,13 @@ my $port = 7999;
 
 
 POE::Component::Server::TCP->new(
-  Alias              => "suvorov_server",
-  Port               => $port,
-  InlineStates       => {send => \&handle_send},
-  ClientConnected    => \&client_connected,
-  ClientError        => \&client_error,
-  ClientDisconnected => \&client_disconnected,
-
+    Alias              => "suvorov_server",
+    Port               => $port,
+    InlineStates       => { send => \&handle_send },
+    ClientConnected    => \&client_connected,
+    ClientError        => \&client_error,
+    ClientDisconnected => \&client_disconnected,
+    ClientInput        => \&client_input
 );
 $poe_kernel->run();
 exit 0;

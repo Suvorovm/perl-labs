@@ -7,9 +7,9 @@ use POE::Filter::Reference;
 use Cwd;
 
 my $host = "localhost"; # The host to test.
-my $port = 7999;
+my $port = 7998;
 
-#-f-s%_%/home/suvorov/Uni/4_1/Perl/perl-labs/NetworkTechnology/ApplicationLayerProtocol/Client/Content/fileClient2.txt%_%fileTest
+#-f-s%_%/home/suvorov/Uni/4_1/Perl/perl-labs/NetworkTechnology/ApplicationLayerProtocol/Client/Content/fileClient.txt%_%fileTest
 
 sub compute_client_command {
     my ($command) = @_;
